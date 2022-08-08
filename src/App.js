@@ -3,10 +3,9 @@ import { Route, Link, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import News from "./components/News";
 import Cryptocurrencies from "./components/Cryptocurrencies";
-import Exchanges from "./components/Exchanges";
 import HomePage from "./components/Homepage";
 import CryptoDetails from "./components/CryptoDetails";
-import { Layout, Typography, Space } from "antd"
+import { Layout, Typography, Space } from "antd";
 
 function App() {
   return (
@@ -19,7 +18,6 @@ function App() {
           <div className="routes">
             <Routes>
               <Route exact path="/" element={<HomePage />} />
-              <Route exact path="/exchanges" element={<Exchanges />} />
               <Route
                 exact
                 path="/cryptocurrencies"
@@ -31,18 +29,20 @@ function App() {
           </div>
         </Layout>
         <div className="footer">
-          <Typography.Title level={5} style={ { color: "white", textAlign: "center" }}>
+          <Typography.Title
+            level={5}
+            style={{ color: "white", textAlign: "center" }}
+          >
             Cryptoverse <br />
             All rights reserved
           </Typography.Title>
           <Space>
-            <Link to="/" >Home</Link>
-            <Link to="/exchanges" >Exchanges</Link>
-            <Link to="/news" >News</Link>
+            <Link to="/">Home</Link>
+            <Link to="/exchanges">Exchanges</Link>
+            <Link to="/news">News</Link>
           </Space>
         </div>
       </div>
-      
     </div>
   );
 }

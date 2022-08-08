@@ -21,9 +21,7 @@ function LineChart({ coinHistory, currentPrice, coinName }) {
       ).toLocaleDateString()
     );
   }
-  console.log(coinPrice);
-  console.log(coinTimestamp);
-  console.log(coinHistory);
+  
   const data = {
     labels: coinTimestamp.reverse(),
     datasets: [
@@ -35,19 +33,19 @@ function LineChart({ coinHistory, currentPrice, coinName }) {
         borderColor: "#0071bd",
       },
     ],
-  };
-
-  const options = {
-    scales: {
-      y: [
-        {
-          ticks: {
-            beginAtZero: true,
+    options : {
+      scales: {
+        y: [
+          {
+            ticks: {
+              beginAtZero: true,
+            },
           },
-        },
-      ],
+        ],
+      },
     },
   };
+
   return (
     <>
       <Row className="chart-header">
@@ -63,7 +61,7 @@ function LineChart({ coinHistory, currentPrice, coinName }) {
           </Title>
         </Col>
       </Row>
-      <Line data={data} options={options} />
+      <Line data={data} />
     </>
   );
 }

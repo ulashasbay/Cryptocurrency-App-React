@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Select, Typography, Row, Col, Avatar, Card } from "antd";
 import moment from "moment";
+import Loader from "./Loader";
+import demoImage from "../images/cryptonews.jpg";
 
 import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
 import { useGetCryptosQuery } from "../services/cryptoApi";
@@ -15,10 +17,9 @@ function News({ simplified }) {
     count: simplified ? 6 : 12,
   });
   const { data } = useGetCryptosQuery(100);
-  const demoImage =
-    "https://coinrevolution.com/wp-content/uploads/2020/06/cryptonews.jpg";
 
-  if (!cryptoNews?.value) return "Loading...";
+  if (!cryptoNews?.value) return <Loader />;
+
   return (
     <Row gutter={[24, 24]}>
       {!simplified && (
@@ -35,7 +36,9 @@ function News({ simplified }) {
           >
             <Option value="Cryptocurrency">Cryptocurrency</Option>
             {data?.data?.coins.map((coin) => (
-              <Option value={coin.name}>{coin.name}</Option>
+              <Option value={coin.name} key={coin.uuid}>
+                {coin.name}
+              </Option>
             ))}
           </Select>
         </Col>
